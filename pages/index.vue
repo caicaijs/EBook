@@ -1,9 +1,8 @@
 <template>
   <div>
     <div class="main">
-      <el-row>
-        <div>
-          <el-col :span="16">
+      <section class="center-section">
+        <div class="carousel-wrap" >
             <div class="grid-content bg-purple">
               <el-carousel :interval="4000" type="card" height="450px" style="padding-top:50px">
                 <el-carousel-item v-for="item in 4" :key="item">
@@ -11,52 +10,47 @@
                 </el-carousel-item>
               </el-carousel>
             </div>
-          </el-col>
         </div>
-        <el-col :span="8">
-          <div style="margin-left:40px">
-            <el-col :span="14">
-              <ul>
-                <li>
-                  <div class="new-book-list">最新书籍</div>
-                </li>
-                <li v-for="(o,index) in 3" :key="o">
-                  <el-card :body-style="{ padding: '0px' }">
-                    <a :href="'/ebook/'+index"><img src="~/static/img/logo.png" class="image" /></a>
-                    <div style="padding: 14px;">
-                      <span>好吃的汉堡</span>
-                      <div class="bottom clearfix">
-                        <time class="time">2020-01-01</time>
-                        <el-button type="text" class="button">下载</el-button>
-                      </div>
+        <div class='recent-books-wrap' style="margin-left:40px">
+            <ul>
+              <li>
+                <div class="new-book-list">最新书籍</div>
+              </li>
+              <li v-for="(o,index) in 3" :key="o">
+                <el-card :body-style="{ padding: '0px' }">
+                  <a :href="'/ebook/'+index"><img src="~/static/img/logo.png" class="image" /></a>
+                  <div style="padding: 14px;">
+                    <span>好吃的汉堡</span>
+                    <div class="bottom clearfix">
+                      <time class="time">2020-01-01</time>
+                      <el-button type="text" class="button">下载</el-button>
                     </div>
-                  </el-card>
-                </li>
-              </ul>
-            </el-col>
-          </div>
-        </el-col>
-      </el-row>
+                  </div>
+                </el-card>
+              </li>
+            </ul>
+        </div>
+      </section>
 
-      <el-low :gutter="20">
-        <el-col :span="24">
-          <div class="hot-book-list">
-            推荐书籍
-          </div>
-        </el-col>
-        <el-col :span="4" class="book-list" v-for="(o, index) in 10" :key="o">
-          <el-card :body-style="{ padding: '0px' }">
-            <a :href="'/ebook/'+index"><img src="~/static/img/logo.png" class="image" /></a>
-            <div style="padding: 14px;">
-              <span>好吃的汉堡</span>
-              <div class="bottom clearfix">
-                <time class="time">2020-01-01</time>
-                <el-button type="text" class="button">下载</el-button>
+      <section class="recommend-wrap">
+        <div class="hot-book-list">
+              推荐书籍
+        </div>
+        <div class="book-list-wrap">
+          <div  class="book-list" v-for="(o, index) in 10" :key="o">
+            <el-card :body-style="{ padding: '0px' }">
+              <a :href="'/ebook/'+index"><img src="~/static/img/logo.png" class="image" /></a>
+              <div style="padding: 14px;">
+                <span>好吃的汉堡</span>
+                <div class="bottom clearfix">
+                  <time class="time">2020-01-01</time>
+                  <el-button type="text" class="button">下载</el-button>
+                </div>
               </div>
-            </div>
-          </el-card>
-        </el-col>
-      </el-low>
+            </el-card>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
 </template>
@@ -72,6 +66,30 @@ export default {
 </script>
 
 <style>
+.center-section {
+  display: flex;
+}
+.carousel-wrap {
+  flex: 2;
+}
+.recent-books-wrap {
+  flex: 1;
+}
+.recommend-wrap {
+  display: flex;
+  flex-direction: column;
+}
+.book-list-wrap{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.book-list {
+  width: 300px;
+  margin-top: 20px;
+  margin-left: 20px
+}
 .new-book-list{
   font-size: 20px;
   font-family: "微软雅黑";
@@ -138,8 +156,5 @@ ul li{
 .el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
 }
-.book-list{
-  margin-top: 20px;
-  margin-left: 20px
-}
+
 </style>

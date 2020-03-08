@@ -52,6 +52,7 @@ a {
   text-decoration: none;
   color: #333;
 }
+
 .footer {
   text-align: center;
   font-size: 15px;
